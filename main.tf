@@ -43,3 +43,18 @@ resource "aws_subnet" "private" {
   )
 
 }
+
+resource "aws_subnet" "database" {
+  count = length(var.database_subnet_cidr)
+  vpc_id     = aws_vpc.main.id
+  cidr_block = var.database_subnet_cidr[count.index]
+  availability_zone = local.avz[count.index]
+
+  tags = merge(
+    local.common_tags,
+    {
+      Name = "${var.project}-${var.environment}-databse-${local.avz[count.index]}"
+    },
+    var.database_subnet_tags
+  )
+}
