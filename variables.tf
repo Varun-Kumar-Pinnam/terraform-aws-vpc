@@ -26,8 +26,8 @@ variable "public_subnet_cidr" {
 }
 
 variable "public_subnet_tags" {
-  type = string
-  default = {}
+  type = map
+  default = { }
 }
 
 variable "private_subnet_cidr" {
@@ -36,6 +36,6 @@ variable "private_subnet_cidr" {
 }
 
 variable "private_subnet_tags" {
-  type = string
-  default = {}
+  type = map
+  default = { }
 }
