@@ -31,7 +31,7 @@ variable "public_subnet_tags" {
 }
 
 variable "private_subnet_cidr" {
-    type = string
+    type = list
      default = ["10.0.11.0/24","10.0.12.0/24"]  
 }
 
