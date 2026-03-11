@@ -21,13 +21,10 @@ gw_final_tags = merge(
     var.gw_tags
     )
 
-subnet_final_tags = merge(
-    local.common_tags,
-    {
-        Name = "${var.project}-${var.environment}"
-    },
-    var.public_subnet_tags
-    )
+avz = slice(data.aws_availability_zones.available.names, 0, 2)
+
+
+
 }
 
 

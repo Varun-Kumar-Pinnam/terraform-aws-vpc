@@ -11,13 +11,20 @@ resource "aws_internet_gateway" "gw" {
   tags = local.gw_final_tags
 }
 
-/* resource "aws_subnet" "public" {
+resource "aws_subnet" "public" {
+  count = length(var.public_subnet_cidr)
   vpc_id     = aws_vpc.main.id
-  cidr_block = var.public_subnet_cidr
-  availability_zone = 
+  cidr_block = var.public_subnet_cidr[count.index]
+  availability_zone = local.avz[count.index]
+  map_public_ip_on_launch = true
 
+  tags = merge(
+    local.common_tags,
+     # roboshop-dev-public-us-east-1a
+    {
+      Name = "${var.project}-${var.environment}-public-${local.avz[count.index]}"
+    },
+     var.public_subnet_tags
+  )
 
-  tags = {
-    Name = "Main"
-  }
-} */
+}
