@@ -27,9 +27,25 @@ avz = slice(data.aws_availability_zones.available.names, 0, 2)
 public_route_table_tags = merge(
     local.common_tags,
     {
-        Name="${var.project}-${var.environment}"
+        Name="${var.project}-${var.environment}-public"
     },
     var.route_table_public
+)
+
+private_route_table_tags = merge(
+    local.common_tags,
+    {
+        Name="${var.project}-${var.environment}-private"
+    },
+    var.route_table_private
+)
+
+database_route_table_tags = merge(
+    local.common_tags,
+    {
+        Name="${var.project}-${var.environment}-database"
+    },
+    var.route_table_database
 )
 }
 

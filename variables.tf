@@ -55,3 +55,13 @@ variable "route_table_public" {
   type = map
   default = {}  
 }
+
+variable "route_table_private" {
+  type = map
+  default = {}  
+}
+
+variable "route_table_database" {
+  type = map
+  default = {}  
+}
