@@ -77,8 +77,11 @@ resource "aws_route_table" "database" {
   tags = local.database_route_table_tags
 }
 
-/* resource "aws_route" "public" {
+resource "aws_route" "public" {
   route_table_id            = aws_route_table.public.id
   destination_cidr_block    = "0.0.0.0/0"
-  gateway_id
-} */
+  gateway_id = aws_internet_gateway.gw.id
+
+  
+}
+

@@ -13,6 +13,7 @@ vpc_final_tags = merge(
     var.vpc_tags
     )
 
+
 gw_final_tags = merge(
     local.common_tags,
     {
@@ -22,7 +23,6 @@ gw_final_tags = merge(
     )
 
 avz = slice(data.aws_availability_zones.available.names, 0, 2)
-
 
 public_route_table_tags = merge(
     local.common_tags,
@@ -47,6 +47,17 @@ database_route_table_tags = merge(
     },
     var.route_table_database
 )
+
+aws_route_public_final_tags = merge(
+        local.common_tags,
+    {
+        Name="${var.project}-${var.environment}-public"
+    },
+    var.aws_route_public
+)
+
+
+
 }
 
 

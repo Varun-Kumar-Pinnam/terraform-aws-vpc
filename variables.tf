@@ -65,3 +65,9 @@ variable "route_table_database" {
   type = map
   default = {}  
 }
+
+variable "aws_route_public" {
+  type = map
+  default = {}  
+}
+
