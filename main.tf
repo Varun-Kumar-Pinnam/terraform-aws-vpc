@@ -5,12 +5,14 @@ resource "aws_vpc" "main" {
   tags = local.vpc_final_tags
 }
 
+#aws IGW 
 resource "aws_internet_gateway" "gw" {
   vpc_id = aws_vpc.main.id
 
   tags = local.gw_final_tags
 }
 
+#aws subnet for public
 resource "aws_subnet" "public" {
   count = length(var.public_subnet_cidr)
   vpc_id     = aws_vpc.main.id
@@ -28,6 +30,7 @@ resource "aws_subnet" "public" {
   )
 }
 
+#aws subnet for private
 resource "aws_subnet" "private" {
   count = length(var.private_subnet_cidr)
   vpc_id     = aws_vpc.main.id
@@ -44,6 +47,7 @@ resource "aws_subnet" "private" {
 
 }
 
+#aws subnet for database
 resource "aws_subnet" "database" {
   count = length(var.database_subnet_cidr)
   vpc_id     = aws_vpc.main.id
@@ -58,30 +62,37 @@ resource "aws_subnet" "database" {
     var.database_subnet_tags
   )
 }
-
+#aws route table for public subnet
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.main.id
 
   tags = local.public_route_table_tags
 }
 
+#aws route table for private subnet
 resource "aws_route_table" "private" {
   vpc_id = aws_vpc.main.id
 
   tags = local.private_route_table_tags
 }
 
+#aws route table for database subnet
 resource "aws_route_table" "database" {
   vpc_id = aws_vpc.main.id
 
   tags = local.database_route_table_tags
 }
 
+#aws route for public subnet
 resource "aws_route" "public" {
   route_table_id            = aws_route_table.public.id
   destination_cidr_block    = "0.0.0.0/0"
   gateway_id = aws_internet_gateway.gw.id
+}
 
-  
+#elastic ip
+
+resource "aws_eip" "lb" {
+  domain   = "vpc"
 }
 

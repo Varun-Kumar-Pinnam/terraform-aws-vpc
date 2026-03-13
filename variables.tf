@@ -71,3 +71,8 @@ variable "aws_route_public" {
   default = {}  
 }
 
+variable "eip_tags" {
+    type = map 
+    default = {}  
+}
+

@@ -56,7 +56,13 @@ aws_route_public_final_tags = merge(
     var.aws_route_public
 )
 
-
+aws_eip_final_tags = merge(
+    local.common_tags,
+    {
+        Name = "${var.project}-${var.environment}-eip"
+    },
+    var.eip_tags
+)
 
 }
 
