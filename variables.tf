@@ -76,3 +76,8 @@ variable "eip_tags" {
     default = {}  
 }
 
+variable "natgw_tags" {
+    type = map 
+    default = {}  
+}
+

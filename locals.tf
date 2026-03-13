@@ -64,6 +64,14 @@ aws_eip_final_tags = merge(
     var.eip_tags
 )
 
+aws_natgw_final_tags = merge(
+    local.common_tags,
+    {
+        Name = "${var.project}-${var.environment}-natgatway"
+    },
+    var.natgw_tags
+)
+
 }
 
 
