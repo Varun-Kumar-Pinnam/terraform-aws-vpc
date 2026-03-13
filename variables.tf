@@ -50,3 +50,8 @@ variable "database_subnet_tags" {
   type = map
   default = { }
 }
+
+variable "route_table_public" {
+  type = map
+  default = {}  
+}

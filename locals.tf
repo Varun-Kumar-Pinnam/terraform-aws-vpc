@@ -24,7 +24,13 @@ gw_final_tags = merge(
 avz = slice(data.aws_availability_zones.available.names, 0, 2)
 
 
-
+public_route_table_tags = merge(
+    local.common_tags,
+    {
+        Name="${var.project}-${var.environment}"
+    },
+    var.route_table.public
+)
 }
 
 

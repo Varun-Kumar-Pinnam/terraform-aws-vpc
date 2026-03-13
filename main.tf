@@ -58,3 +58,11 @@ resource "aws_subnet" "database" {
     var.database_subnet_tags
   )
 }
+
+resource "aws_route_table" "public" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = "example"
+  }
+}
