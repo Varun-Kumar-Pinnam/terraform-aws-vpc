@@ -29,7 +29,7 @@ public_route_table_tags = merge(
     {
         Name="${var.project}-${var.environment}"
     },
-    var.route_table.public
+    var.route_table_public
 )
 }
 
