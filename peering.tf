@@ -12,6 +12,12 @@ resource "aws_vpc_peering_connection" "default" {
   requester {
     allow_remote_vpc_dns_resolution = true
   }
+}
 
-
+#aws route for public subnet
+resource "aws_route" "public_peering" {
+  count = var.is_peering_required ? 1 : 0
+  route_table_id            = aws_route_table.public.id
+  destination_cidr_block    = "0.0.0.0/0"
+  vpc_peering_connection_id  = 
 }
