@@ -26,7 +26,7 @@ resource "aws_route" "public_peering" {
 
 
 #aws route for destination vpc main route table subnet
-resource "aws_route" "public_peering" {
+resource "aws_route" "default_peering" {
   count = var.is_peering_required ? 1 : 0
   route_table_id            = data.aws_vpc.default_vpc.main_route_table_id
   destination_cidr_block    = var.vpc_cidr
