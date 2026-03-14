@@ -72,6 +72,13 @@ aws_natgw_final_tags = merge(
     var.natgw_tags
 )
 
+aws_peering_final_tags = merge(
+    local.common_tags,
+    {
+        Name = "${var.project}-${var.environment}"
+    },
+    var.peering_tags
+)
 }
 
 

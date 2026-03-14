@@ -12,6 +12,8 @@ resource "aws_vpc_peering_connection" "default" {
   requester {
     allow_remote_vpc_dns_resolution = true
   }
+
+  tags = local.aws_peering_final_tags
 }
 
 #aws route for public subnet
