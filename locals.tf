@@ -48,14 +48,14 @@ database_route_table_tags = merge(
     var.route_table_database_tags
 )
 
-aws_route_public_final_tags = merge(
+/* aws_route_public_final_tags = merge(
         local.common_tags,
     {
         Name="${var.project}-${var.environment}-public"
     },
     var.aws_route_public_tags
 )
-
+ */
 aws_eip_final_tags = merge(
     local.common_tags,
     {
