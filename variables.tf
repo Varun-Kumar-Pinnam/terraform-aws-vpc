@@ -51,22 +51,22 @@ variable "database_subnet_tags" {
   default = { }
 }
 
-variable "route_table_public" {
+variable "route_table_public_tags" {
   type = map
   default = {}  
 }
 
-variable "route_table_private" {
+variable "route_table_private_tags" {
   type = map
   default = {}  
 }
 
-variable "route_table_database" {
+variable "route_table_database_tags" {
   type = map
   default = {}  
 }
 
-variable "aws_route_public" {
+variable "aws_route_public_tags" {
   type = map
   default = {}  
 }

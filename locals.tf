@@ -29,7 +29,7 @@ public_route_table_tags = merge(
     {
         Name="${var.project}-${var.environment}-public"
     },
-    var.route_table_public
+    var.route_table_public_tags
 )
 
 private_route_table_tags = merge(
@@ -37,7 +37,7 @@ private_route_table_tags = merge(
     {
         Name="${var.project}-${var.environment}-private"
     },
-    var.route_table_private
+    var.route_table_private_tags
 )
 
 database_route_table_tags = merge(
@@ -45,7 +45,7 @@ database_route_table_tags = merge(
     {
         Name="${var.project}-${var.environment}-database"
     },
-    var.route_table_database
+    var.route_table_database_tags
 )
 
 aws_route_public_final_tags = merge(
@@ -53,7 +53,7 @@ aws_route_public_final_tags = merge(
     {
         Name="${var.project}-${var.environment}-public"
     },
-    var.aws_route_public
+    var.aws_route_public_tags
 )
 
 aws_eip_final_tags = merge(
