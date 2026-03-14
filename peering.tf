@@ -16,10 +16,19 @@ resource "aws_vpc_peering_connection" "default" {
   tags = local.aws_peering_final_tags
 }
 
-#aws route for public subnet
+#aws route for public route table
 resource "aws_route" "public_peering" {
   count = var.is_peering_required ? 1 : 0
   route_table_id            = aws_route_table.public.id
   destination_cidr_block    = data.aws_vpc.default_vpc.cidr_block
+  vpc_peering_connection_id  = aws_vpc_peering_connection.default[count.index].id
+}
+
+
+#aws route for destination vpc main route table subnet
+resource "aws_route" "public_peering" {
+  count = var.is_peering_required ? 1 : 0
+  route_table_id            = data.aws_vpc.default_vpc.main_route_table_id
+  destination_cidr_block    = var.vpc_cidr
   vpc_peering_connection_id  = aws_vpc_peering_connection.default[count.index].id
 }
