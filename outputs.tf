@@ -12,3 +12,7 @@ output "default_vpc" {
     value = data.aws_vpc.default_vpc
   
 }
+
+output "vpc_id" {
+    value = aws_vpc.main.id  
+}
