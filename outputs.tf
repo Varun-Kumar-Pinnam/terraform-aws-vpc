@@ -7,12 +7,20 @@ output "igw_id" {
   
 }
 
-output "default_vpc" {
-
-    value = data.aws_vpc.default_vpc
-  
-}
-
 output "vpc_id" {
     value = aws_vpc.main.id  
+}
+
+#public subnet id for child modules
+output "public_subnet_id" {
+    value = aws_subnet.public[*].id
+}
+
+#private subnet id for child modules
+output "private_subnet_id" {
+    value = aws_subnet.private[*].id
+}
+#database subnet id for child modules
+output "database_subnet_id" {
+    value = aws_subnet.database[*].id
 }
